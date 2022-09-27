@@ -1,5 +1,4 @@
 #include "main.h"
-#include <stdio.h>
 /**
  * main - entry point
  * a function that prints all natural numbers from n to 98, followed by a new line.
