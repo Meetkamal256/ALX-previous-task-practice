@@ -17,6 +17,10 @@ char *_strdup(char *str)
     {
         return NULL;
     }
+     if (a == NULL)
+    {
+        return NULL;
+    }
     /*while loop to calculate string length*/
     i = 0;
     while (str[i] != '\0')
@@ -33,7 +37,7 @@ char *_strdup(char *str)
     /*make a copy str to a new location*/
     for (c = 0; str[c] != '\0'; c++)
     {
-        a[c] = str[c];
+         a[c] = str[c];
     }
     a[c] = '\0';
     return (a);

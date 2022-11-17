@@ -1,5 +1,6 @@
 #include "main.h"
 #include <stdlib.h>
+#include <string.h>
 
 /**
  * str_concat - concatenate two strings using malloc
@@ -10,20 +11,26 @@
 
 char *str_concat(char *s1, char *s2)
 {
-	char *a;
-	int i, j;
-
 	if (s1 == NULL)
-		s1 = "";
+	{
+	return("");
+	}
 	if (s2 == NULL)
-		s2 = "";
-
-	for (i = 0; s1[i] != '\0'; i++)
-		;
-	for (j = 0; s2[j] != '\0'; j++)
-		;
-
-	a = malloc((i * sizeof(*s1)) + (j * sizeof(*s2)) + 1);
-
-	return (a);
+	{
+	return ("");
+	}
+	int s1_length = strlen(s1);
+	int s2_length = strlen(s2);
+	int size = s1_length + s2_length + 1;
+	char *s = calloc(size, sizeof(char));
+	for (int i = 0; i < s1_length; i++)
+	{
+		s[i] = s1[i];
+	}
+	for (int i = 0; i < s2_length; i++)
+	{
+		s[s1_length + i] = s2[i];
+	}
+	s[size - 1] = '\0';
+	return (s);
 }

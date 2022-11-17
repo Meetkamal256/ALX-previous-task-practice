@@ -5,9 +5,9 @@
  * 
  */
 
-    int main (int argc, char *argv[])
+    int main (int argc, __attribute__((unused)) char const *argv[])
 {
-    printf("%d" argc);
+    printf("%d\n",argc - 1);
 
     return 0;
 }
