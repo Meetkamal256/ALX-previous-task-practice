@@ -11,23 +11,19 @@
 char *create_array(unsigned int size, char c)
 {
     char *ptrarray;
-    unsigned int count;
+    unsigned int i;
     /*allocate enough space in memory for all array elements */
-    ptrarray = (char *)malloc(size * sizeof(char));
+     ptrarray = (char *)malloc(size * sizeof(char));
     /* put char c in each of the allocated spaces in memory */                                                               
-        for (count = 0; count < size; count++)
-    {
-        /* a loop is used which is intialized with a counter variable 0,
-        the loop counter checks if count < size and assigns char c to the specific allocated
-        space on memory, if counter is less than size it is incremented and the loop exits when
-        it reaches the terminating null character */
-        ptrarray[count] = c;
-    }
-    if (size == 0)
+        for (i = 0; i < size; i++)
+        {
+            ptrarray[i] = c;
+        }
+         if (size == 0)
         return NULL;
     else if
         (ptrarray == NULL) return NULL;
     else
-     ptrarray[count] = '\0';
+     ptrarray[i] = '\0';
         return (ptrarray);
 }
