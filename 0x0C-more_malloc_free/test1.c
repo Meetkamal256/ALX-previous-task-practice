@@ -18,13 +18,14 @@ int main(void)
 }
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
-    char *ptr;
-    int len1, len2, numbyte;
-    if (s1 == NULL) /*account for NULL strings*/
+    char *s;
+    int len1, len2; 
+    int numbyte;
+    if (s1 == NULL)
         return ("");
-    if (s2 == NULL) /*account for NULL strings*/
+    if (s2 == NULL)
         return ("");
-    while (s1[len1] != '\0') /*get length 0f s1*/
+    while (s1[len1] != '\0')
     {
         len1++;
     }
@@ -32,23 +33,28 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
     {
         len2++;
     }
-    if (len2 > n) /*if s2 is more than n*/
-        numbyte = n;
-    if (len2 < n) /*if s2 is less than n, n will be equal to the length of s2 so as not to leave any unused memory space*/
-        numbyte = s2[len2];
-
-    /*allocate space for s1 and the number of bytes to be copied from s2*/
-    ptr = malloc(sizeof(char) * (len1 + numbyte));
-    if (ptr == NULL) /*check for error in case malloc fails*/
+    if (len2 > n)
+    numbyte = n;
+    if (len2 < n)
+    {
+        n = s2[len2];
+    }
+    s = (char *)malloc(sizeof(char) * len1 + numbyte);
+    if (s == NULL)
+    {
         return NULL;
-    for (len1 = 0; s1[len1] != '\0'; len1++) /*copy s1 to allotted space*/
-    {
-        ptr[len1] = s1[len1];
     }
-    for (len2 = 0; len2 < numbyte; len2++)
+    len1 = 0;
+    len2 = 0;
+    while (s1[len1] != '\0')
     {
-        ptr[len1 + len2] = s2[len2];
+        s[len1] = s1[len1];
+        len1++;
     }
-    ptr[len1 + len2] = '\0';
-    return (ptr);
+    while (len2 < n)
+    {
+        s[len1 + len2] = s2[len2];
+    }
+    s[len1 + len2] = '\0';
+    return (s);
 }
