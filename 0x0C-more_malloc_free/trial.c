@@ -1,21 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-/**
- * main - check the code
- *
- * Return: Always 0.
- */
 char *string_nconcat(char *s1, char *s2, unsigned int n);
-int main(void)
-{
-    char *concat;
 
-    concat = string_nconcat("Best ", "School !!!", 6);
-    printf("%s\n", concat);
-    free(concat);
-    return (0);
-}
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
     char *s;
@@ -37,9 +24,9 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
     numbyte = n;
     if (len2 < n)
     {
-        n = s2[len2];
+        numbyte= s2[len2];
     }
-    s = (char *)malloc(sizeof(char) * len1 + numbyte);
+    s = (char *)malloc(sizeof(char) * (len1 + numbyte));
     if (s == NULL)
     {
         return NULL;
@@ -51,10 +38,21 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
         s[len1] = s1[len1];
         len1++;
     }
-    while (len2 < n)
+    while (len2 < numbyte)
     {
         s[len1 + len2] = s2[len2];
+        len2++;
     }
     s[len1 + len2] = '\0';
     return (s);
+}
+    
+    int main(void)
+{
+    char *concat;
+
+    concat = string_nconcat("Best ", "School !!!", 6);
+    printf("%s\n", concat);
+    free(concat);
+    return (0);
 }
