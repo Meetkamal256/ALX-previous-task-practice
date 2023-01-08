@@ -1,15 +1,29 @@
-#include <unistd.h>
 #include "main.h"
-#include <stdarg.h>
+#include <unistd.h>
+
 /**
- * print_str - prints a variadic string each character per time to stdout
- * @args: variadic parameters
- * 
- * Return: number of character printed
+ * print_str - prints a variadic string each per time to stdout
+ * @args: variadic parameter
+ *
+ * Return: number of characters printed on Success
+ * upon failure -1
  */
 
-    int print_str(va_list args)
+int print_str(va_list args)
 {
-    //expression
-    return (0);
-}
+	int i;
+	int count = 0;
+	char *str;
+
+	str = va_arg(args, char *);
+	if (str == NULL)
+		return (-1);
+
+	while (str[i] != '\0')
+	{
+		count = write(1, &str[i], 1);
+		i++;
+	}
+
+	return (count);
+}	

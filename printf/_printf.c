@@ -18,7 +18,7 @@ int _printf(const char *format, ...)
     int value = 0;
     va_list args;
     va_start(args, format);
-    int (*f)(va_list);
+    int(*f)(va_list);
     /*parsing a Null pointer*/
     if (format == NULL)
         return (-1);
@@ -59,4 +59,3 @@ int _printf(const char *format, ...)
     }
     return (count);
 }
- 
